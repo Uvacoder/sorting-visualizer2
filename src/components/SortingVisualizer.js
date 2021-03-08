@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import "../bars.css";
 import { sleep } from "./delay";
+import Button from "react-bootstrap/Button";
+import "bootstrap/dist/css/bootstrap.min.css";
 export default class SortingVisualizer extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			arr: [],
-			currentIndexI: null,
 			currentIndexJ: null,
 			currentIndexJpp: null,
 			sorted_array: false,
@@ -27,7 +28,6 @@ export default class SortingVisualizer extends Component {
 			arr,
 			currentIndexJ: null,
 			currentIndexJpp: null,
-			currentIndexI: null,
 			sorted_array: false,
 		});
 	};
@@ -47,14 +47,13 @@ export default class SortingVisualizer extends Component {
 				}
 				this.setState({ arr });
 			}
-			//this.setState({ currentIndexI: len - i });
 		}
 		this.setState({ arr });
 		this.setState({ sorted_array: true });
 	};
 
 	render() {
-		// random bars:
+		// random height bars:
 		const bars = this.state.arr.map((value, index) => {
 			return (
 				<div
@@ -64,8 +63,6 @@ export default class SortingVisualizer extends Component {
 							? "bar_active"
 							: this.state.currentIndexJpp === index
 							? "bar_active"
-							: this.state.currentIndexI === index
-							? "bar_i"
 							: ""
 					}
 					key={index}
@@ -73,9 +70,15 @@ export default class SortingVisualizer extends Component {
 			);
 		});
 		// buttons:
-		const resetButton = <button onClick={this.resetArray}>Reset</button>;
+		const resetButton = (
+			<Button onClick={this.resetArray} style={{ marginRight: "10px" }}>
+				Reset
+			</Button>
+		);
 		const bubbleSortButton = (
-			<button onClick={this.bubbleSort}>Bubble Sort</button>
+			<Button variant="warning" onClick={this.bubbleSort}>
+				Bubble Sort
+			</Button>
 		);
 
 		return (
@@ -89,7 +92,7 @@ export default class SortingVisualizer extends Component {
 		);
 	}
 }
-
+// generate randon values given min,max bounds
 function getRandomIntFromInterval(min, max) {
 	return Math.floor(Math.random() * (max - min) + min);
 }
