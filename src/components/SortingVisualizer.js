@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "../bars.css";
 import { sleep } from "./delay";
 import Button from "react-bootstrap/Button";
-import "bootstrap/dist/css/bootstrap.min.css";
+
 export default class SortingVisualizer extends Component {
 	constructor(props) {
 		super(props);
