@@ -21,7 +21,7 @@ export default class SortingVisualizer extends Component {
 	resetArray = () => {
 		// reset the array to random values
 		const arr = [];
-		for (let i = 0; i < 50; i++) {
+		for (let i = 0; i < 30; i++) {
 			arr.push(getRandomIntFromInterval(10, 100));
 		}
 		this.setState({
@@ -36,9 +36,9 @@ export default class SortingVisualizer extends Component {
 		let len = this.state.arr.length;
 		let arr = this.state.arr;
 		for (let i = 0; i < len; i++) {
-			await sleep(50);
+			await sleep(40);
 			for (let j = 0; j < len - i - 1; j++) {
-				await sleep(25);
+				await sleep(20);
 				this.setState({ currentIndexJ: j, currentIndexJpp: j + 1 });
 				if (arr[j] > arr[j + 1]) {
 					let temp = arr[j];
@@ -71,12 +71,15 @@ export default class SortingVisualizer extends Component {
 		});
 		// buttons:
 		const resetButton = (
-			<Button onClick={this.resetArray} style={{ marginRight: "10px" }}>
+			<Button
+				onClick={this.resetArray}
+				style={{ marginRight: "10px" }}
+				size="sm">
 				Reset
 			</Button>
 		);
 		const bubbleSortButton = (
-			<Button variant="warning" onClick={this.bubbleSort}>
+			<Button variant="warning" onClick={this.bubbleSort} size="sm">
 				Bubble Sort
 			</Button>
 		);
